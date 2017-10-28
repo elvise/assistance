@@ -50,7 +50,7 @@ cur_frm.cscript.onload = function(doc, dt, dn){
 
 	cur_frm.dashboard.data = cur_frm.meta.__dashboard;
 	cur_frm.dashboard.data_rendered = false;
-	cur_fmr.dashboard.transactions_area.empty();
-	
+	cur_frm.dashboard.transactions_area.empty();
+
 	cur_frm.dashboard.refresh();
 }
