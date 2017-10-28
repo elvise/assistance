@@ -1,7 +1,7 @@
 var sales_order_onload = cur_frm.cscript.onload;
 
 cur_frm.cscript.onload = function(doc, dt, dn){
-    sales_order_onload.apply(null, [doc, dt, dn]);
+    sales_order_onload.apply(this, [doc, dt, dn]);
 
     cur_frm.meta.__dashboard = {
 		'fieldname': 'sales_order',
