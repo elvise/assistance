@@ -11,10 +11,10 @@ cur_frm.cscript.onload = function(doc, dt, dn){
 			'Payment Entry': 'reference_name',
 			'Payment Request': 'reference_name',
 			'Subscription': 'reference_document',
+			'Assistance': 'prevdoc_docname'
 		},
 		'internal_links': {
 			'Quotation': ['items', 'prevdoc_docname'],
-			'Assistance': ['items', 'prevdoc_docname']
 		},
 		'transactions': [
 			{
@@ -47,4 +47,7 @@ cur_frm.cscript.onload = function(doc, dt, dn){
 			},
 		]
 	}
+
+	cur_frm.dashboard.data = cur_frm.meta.__dashboard;
+	cur_frm.dashboard.refresh();
 }
