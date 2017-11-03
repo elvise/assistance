@@ -65,8 +65,7 @@ cur_frm.cscript.refresh = function(doc, dt, dn){
 
 	if(doc.docstatus == 1){
 		// maintenance
-		if(flt(doc.per_delivered, 2) < 100 &&
-				["Sales", "Shopping Cart"].indexOf(doc.order_type)===-1) {
+		if(flt(doc.per_delivered, 2) < 100) {
 			cur_frm.add_custom_button(__('Assistance'),
 				function() { cur_frm.cscript.make_assistance() }, __("Make"));
 		}
