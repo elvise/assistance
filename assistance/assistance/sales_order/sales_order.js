@@ -1,7 +1,10 @@
-var sales_order_onload = cur_frm.cscript.onload;
+var assistance_sales_order_onload = cur_frm.cscript.onload;
+var assistance_sales_order_refresh = cur_frm.cscript.refresh;
 
 cur_frm.cscript.onload = function(doc, dt, dn){
-    sales_order_onload.apply(this, [doc, dt, dn]);
+	if(assistance_sales_order_onload){
+	    assistance_sales_order_onload.apply(this, [doc, dt, dn]);
+	}
 
     cur_frm.meta.__dashboard = {
 		'fieldname': 'sales_order',
@@ -53,4 +56,26 @@ cur_frm.cscript.onload = function(doc, dt, dn){
 	cur_frm.dashboard.transactions_area.empty();
 
 	cur_frm.dashboard.refresh();
+}
+
+cur_frm.cscript.refresh = function(doc, dt, dn){
+	if(assistance_sales_order_refresh){
+		assistance_sales_order_refresh.apply(this, [doc, dt, dn]);
+	}
+	
+	if(doc.docstatus == 1){
+		// maintenance
+		if(flt(doc.per_delivered, 2) < 100 &&
+				["Sales", "Shopping Cart"].indexOf(doc.order_type)===-1) {
+			this.frm.add_custom_button(__('Assistance'),
+				function() { cur_frm.cscript.make_assistance() }, __("Make"));
+		}
+	}
+}
+
+cur_frm.cscript.make_assistance= function() {
+	frappe.model.open_mapped_doc({
+		method: "assistance.assistance.sales_order.sales_order.make_assistance",
+		frm: this.frm
+	})
 }

@@ -10,7 +10,7 @@ from frappe.model.mapper import get_mapped_doc
 
 
 @frappe.whitelist()
-def make_maintenance_visit(source_name, target_doc=None):
+def make_assistance(source_name, target_doc=None):
 	visit = frappe.db.sql("""select t1.name
 		from `tabAssistance` t1, `tabAssistance Visit Purpose` t2
 		where t2.parent=t1.name and t2.prevdoc_docname=%s

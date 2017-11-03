@@ -61,7 +61,7 @@ assistance.Assistance = frappe.ui.form.Controller.extend({
 			this.frm.add_custom_button(__('Sales Order'),
 				function() {
 					erpnext.utils.map_current_doc({
-						method: "assistance.assistance.sales_order.sales_order.make_maintenance_visit",
+						method: "assistance.assistance.sales_order.sales_order.make_assistance",
 						source_doctype: "Sales Order",
 						target: me.frm,
 						setters: {
