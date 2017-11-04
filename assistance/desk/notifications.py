@@ -23,7 +23,7 @@ def get_open_count(doctype, name, dashboard_data=None):
 	if not dashboard_data:
 		links = meta.get_dashboard_data()
 	else:
-		links = json.loads(dashboard_data)
+		links = frappe._dict(json.loads(dashboard_data))
 
 	# compile all items in a list
 	items = []
