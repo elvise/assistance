@@ -16,7 +16,7 @@ app_license = "Proprietary"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/assistance/css/assistance.css"
-# app_include_js = "/assets/assistance/js/assistance.js"
+app_include_js = "/assets/js/assistance.min.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/assistance/css/assistance.css"
