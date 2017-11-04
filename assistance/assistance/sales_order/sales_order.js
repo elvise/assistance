@@ -57,6 +57,7 @@ cur_frm.cscript.onload = function(doc, dt, dn){
 
 	cur_frm.dashboard.refresh();
 	cur_frm.dashboard.after_refresh();
+	cur_frm.dashboard.set_open_count();
 }
 
 cur_frm.cscript.refresh = function(doc, dt, dn){
