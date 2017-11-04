@@ -19,7 +19,11 @@ frappe.ui.form.Dashboard.prototype.set_open_count = function() {
 	}
 
 	if(!this.data.method){
-		args["dashboard_data"] = this.data;
+		var dashboard_data = $.extend({}, this.data);
+
+		delete dashboard_data["frm"];
+
+		args["dashboard_data"] = dashboard_data;
 	}
 
 	frappe.call({
