@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import frappe
-
+import json
 
 @frappe.whitelist()
 def get_open_count(doctype, name, dashboard_data=None):
@@ -23,7 +23,7 @@ def get_open_count(doctype, name, dashboard_data=None):
 	if not dashboard_data:
 		links = meta.get_dashboard_data()
 	else:
-		links = dashboard_data
+		links = json.loads(dashboard_data)
 
 	# compile all items in a list
 	items = []
