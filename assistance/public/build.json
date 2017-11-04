@@ -1,0 +1,5 @@
+{
+    "js/assistance.min.js": [
+        "public/js/dashboard.js"
+    ]
+}

@@ -116,7 +116,7 @@ doctype_js = {"Sales Order" : "assistance/sales_order/sales_order.js"}
 # Overriding Whitelisted Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "assistance.event.get_events"
-# }
+override_whitelisted_methods = {
+	"frappe.desk.notifications.get_open_count": "assistance.desk.notifications.get_open_count"
+}
 
