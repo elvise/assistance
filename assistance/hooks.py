@@ -101,8 +101,8 @@ doc_events = {
 # 		"on_trash": "method"
 #	}
  	"Assistance": {
- 		"on_submit": "assistance.assistance.sales_order.sales_order.on_submit",
- 		"on_cancel": "assistance.assistance.sales_order.sales_order.on_cancel",
+ 		"validate": "assistance.assistance.assistance.validate",
+ 		"on_submit": "assistance.assistance.assistance.on_submit",
 	}
 }
 
