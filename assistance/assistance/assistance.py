@@ -29,7 +29,8 @@ def on_submit(self, method):
 		serial_no_data = frappe.db.get_value("Sales Order Item", {
 			"parent": item.prevdoc_docname,
 			"parenttype": item.prevdoc_doctype,
-			"item_code": item.item_code
+			"item_code": item.item_code,
+            "name": item.prevdoc_detail_docname
 		}, ["serial_no", "name"])
 
 		if serial_no_data:

@@ -57,7 +57,8 @@ def make_assistance(source_name, target_doc=None):
 				"doctype": "Assistance Visit Purpose",
 				"field_map": {
 					"parent": "prevdoc_docname",
-					"parenttype": "prevdoc_doctype"
+					"parenttype": "prevdoc_doctype",
+					"name": "prevdoc_detail_docname"
 				},
 				"add_if_empty": True
 			}

@@ -53,7 +53,8 @@ fixtures = [
         "filters": {
             "fieldname": [
                 "in", [
-                    "serial_no"
+                    "serial_no",
+                    "warehouse"
                 ]
             ]
         }
