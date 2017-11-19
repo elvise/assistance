@@ -45,6 +45,21 @@ doctype_js = {"Sales Order" : "assistance/sales_order/sales_order.js"}
 # Website user home page (by function)
 # get_website_user_home_page = "assistance.utils.get_home_page"
 
+# Fixtures
+# --------
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": {
+            "fieldname": [
+                "in", [
+                    "serial_no"
+                ]
+            ]
+        }
+    }
+]
+
 # Generators
 # ----------
 
@@ -79,13 +94,17 @@ doctype_js = {"Sales Order" : "assistance/sales_order/sales_order.js"}
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 #	}
-# }
+ 	"Sales Order": {
+ 		"on_submit": "assistance.assistance.sales_order.sales_order.on_submit",
+ 		"on_cancel": "assistance.assistance.sales_order.sales_order.on_cancel",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
