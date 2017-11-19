@@ -100,7 +100,7 @@ doc_events = {
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 #	}
- 	"Sales Order": {
+ 	"Assistance": {
  		"on_submit": "assistance.assistance.sales_order.sales_order.on_submit",
  		"on_cancel": "assistance.assistance.sales_order.sales_order.on_cancel",
 	}
