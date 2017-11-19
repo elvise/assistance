@@ -9,7 +9,7 @@ import frappe.utils
 from frappe.model.mapper import get_mapped_doc
 
 def on_submit(self, method):
-	for item in self.get("items"):
+	for item in self.get("purposes"):
 		if not (item.prevdoc_doctype and item.prevdoc_doctype == "Sales Order" and
 				item.prevdoc_docname and item.serial_no):
 			return
