@@ -49,9 +49,9 @@ def make_assistance(source_name, target_doc=None):
 		doclist = get_mapped_doc("Sales Order", source_name, {
 			"Sales Order": {
 				"doctype": "Assistance",
-				"validation": {
-					"docstatus": ["=", 1]
-				}
+				#"validation": {
+				#	"docstatus": ["=", 1]
+				#}
 			},
 			"Sales Order Item": {
 				"doctype": "Assistance Visit Purpose",

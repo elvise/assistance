@@ -65,7 +65,7 @@ cur_frm.cscript.refresh = function(doc, dt, dn){
 		assistance_sales_order_refresh.apply(this, [doc, dt, dn]);
 	}
 
-	if(doc.docstatus == 1){
+	if(doc.docstatus <= 1){
 		// maintenance
 		if(flt(doc.per_delivered, 2) < 100) {
 			cur_frm.add_custom_button(__('Assistance'),
