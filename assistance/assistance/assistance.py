@@ -20,6 +20,7 @@ def validate(self, method):
 
 def before_save(self, method):
     update_sales_order_items(self)
+    update_assistance_status_in_sales_order(self)
 
 def on_submit(self, method):
     for item in self.get("purposes"):
@@ -106,7 +107,7 @@ def update_sales_order_items(self):
             if key not in default_fields and hasattr(child_item, key):
                 child_item.set(key, value, as_value=True)
 
-        sales_order.assistance_state = self.assistance_state
+
         sales_order.save()
         #frappe.db.set_value("Assistance Visit Purpose", item.name, "prevdoc_detail_docname", joined,
         #                    update_modified=False)
@@ -116,6 +117,15 @@ def update_sales_order_items(self):
 
     pass
 
+
+def update_assistance_status_in_sales_order(self):
+    sales_order = get_sales_order(self)
+
+    if not sales_order:
+        return
+
+    frappe.db.set_value("Sales Order", sales_order.name, "assistance_state", self.assistance_state,
+                                            update_modified=False)
 
 def get_sales_order(self):
     sales_order = None
