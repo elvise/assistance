@@ -1,9 +1,9 @@
-var assistance_sales_order_onload = cur_frm.cscript.onload;
-var assistance_sales_order_refresh = cur_frm.cscript.refresh;
+cur_frm.cscript.assistance_sales_order_onload = cur_frm.cscript.onload;
+cur_frm.cscript.assistance_sales_order_refresh = cur_frm.cscript.refresh;
 
 cur_frm.cscript.onload = function(doc, dt, dn){
-	if(assistance_sales_order_onload){
-	    assistance_sales_order_onload.apply(this, [doc, dt, dn]);
+	if(cur_frm.cscript.assistance_sales_order_onload){
+	    cur_frm.cscript.assistance_sales_order_onload.apply(this, [doc, dt, dn]);
 	}
 
     cur_frm.meta.__dashboard = {
@@ -55,14 +55,16 @@ cur_frm.cscript.onload = function(doc, dt, dn){
 	cur_frm.dashboard.data_rendered = false;
 	cur_frm.dashboard.transactions_area.empty();
 
-	cur_frm.dashboard.refresh();
-	cur_frm.dashboard.after_refresh();
-	cur_frm.dashboard.set_open_count();
+	if(!cur_frm.doc.__islocal){
+		cur_frm.dashboard.refresh();
+		cur_frm.dashboard.after_refresh();
+		cur_frm.dashboard.set_open_count();
+	}
 }
 
 cur_frm.cscript.refresh = function(doc, dt, dn){
-	if(assistance_sales_order_refresh){
-		assistance_sales_order_refresh.apply(this, [doc, dt, dn]);
+	if(cur_frm.cscript.assistance_sales_order_refresh){
+		cur_frm.cscript.assistance_sales_order_refresh.apply(this, [doc, dt, dn]);
 	}
 
 	if(doc.docstatus <= 1){
