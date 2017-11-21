@@ -54,7 +54,8 @@ fixtures = [
             "fieldname": [
                 "in", [
                     "serial_no",
-                    "warehouse"
+                    "warehouse",
+                    "assistance_state"
                 ]
             ]
         }
