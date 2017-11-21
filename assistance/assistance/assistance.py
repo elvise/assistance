@@ -99,11 +99,11 @@ def update_sales_order_items(self):
         del out["doctype"]
         del out["name"]
 
-        child_item = sales_order.append({})
+        child_item = sales_order.append("items", {})
 
         for key, value in out.items():
-            if hasattr(child_item, key):
-                child_item.set(key, value, as_value=True);
+            if key not in default_fields and hasattr(child_item, key):
+                child_item.set(key, value, as_value=True)
 
         sales_order.save()
 
