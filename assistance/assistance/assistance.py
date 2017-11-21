@@ -18,6 +18,8 @@ def validate(self, method):
         }, d.serial_no):
             frappe.throw(_("Serial No {0} does not exist").format(d.serial_no))
 
+def before_save(self, method):
+    update_sales_order_items(self)
 
 def on_submit(self, method):
     for item in self.get("purposes"):
@@ -47,7 +49,6 @@ def on_submit(self, method):
             frappe.db.set_value("Sales Order Item", serial_no_data[1], "serial_no", joined,
                                 update_modified=False)
 
-    update_sales_order_items(self)
 
 
 def update_sales_order_items(self):
@@ -68,9 +69,9 @@ def update_sales_order_items(self):
     if not sales_order.docstatus == 0:
         return
 
-    for item in self.get("purposes", {"prevdoc_doctype": "Sales Order"}):
+    for item in self.get("purposes"):
         if item.prevdoc_docname or item.prevdoc_doctype:
-            return
+            continue
 
         out = get_item_details({
             "item_code": item.item_code,
@@ -106,6 +107,11 @@ def update_sales_order_items(self):
                 child_item.set(key, value, as_value=True)
 
         sales_order.save()
+        #frappe.db.set_value("Assistance Visit Purpose", item.name, "prevdoc_detail_docname", joined,
+        #                    update_modified=False)
+        item.prevdoc_detail_docname = child_item.name
+        item.prevdoc_doctype = sales_order.doctype
+        item.prevdoc_docname = sales_order.name
 
     pass
 
@@ -115,7 +121,7 @@ def get_sales_order(self):
     for item in self.get("purposes", {"prevdoc_doctype": "Sales Order"}):
         if not item.prevdoc_docname or not (item.prevdoc_doctype and
                                                     item.prevdoc_doctype == "Sales Order"):
-            return
+            continue
 
         if not sales_order:
             sales_order = frappe.get_doc("Sales Order", item.prevdoc_docname)
