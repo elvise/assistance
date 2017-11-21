@@ -23,10 +23,10 @@ def on_submit(self, method):
     for item in self.get("purposes"):
         if not (item.prevdoc_doctype and item.prevdoc_doctype == "Sales Order" and
                     item.prevdoc_docname and item.serial_no):
-            return
+            continue
 
         if not frappe.db.sql("""select name from `tabSales Order` where name=%s""", item.prevdoc_docname):
-            return
+            continue
 
         serial_no_data = frappe.db.get_value("Sales Order Item", {
             "parent": item.prevdoc_docname,
