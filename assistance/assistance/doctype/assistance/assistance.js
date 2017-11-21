@@ -87,8 +87,11 @@ cur_frm.cscript.onload = function(doc, dt, dn) {
 	// set add fetch for item_code's item_name and description
 	cur_frm.add_fetch('item_code', 'item_name', 'item_name');
 	cur_frm.add_fetch('item_code', 'description', 'description');
+	cur_frm.add_fetch('item_code', 'standard_rate', 'rate');
 }
 
 cur_frm.fields_dict.customer.get_query = function(doc,cdt,cdn) {
 	return {query: "erpnext.controllers.queries.customer_query" }
 }
+
+
