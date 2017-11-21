@@ -106,6 +106,7 @@ def update_sales_order_items(self):
             if key not in default_fields and hasattr(child_item, key):
                 child_item.set(key, value, as_value=True)
 
+        sales_order.assistance_state = self.assistance_state
         sales_order.save()
         #frappe.db.set_value("Assistance Visit Purpose", item.name, "prevdoc_detail_docname", joined,
         #                    update_modified=False)

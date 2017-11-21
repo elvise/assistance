@@ -104,7 +104,7 @@ doc_events = {
  	"Assistance": {
  		"validate": "assistance.assistance.assistance.validate",
  		"before_save": "assistance.assistance.assistance.before_save",
- 		"on_submit": "assistance.assistance.assistance.on_submit",
+ 		"on_submit": "assistance.assistance.assistance.on_submit"
 	}
 }
 
