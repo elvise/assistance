@@ -90,6 +90,12 @@ cur_frm.cscript.onload = function(doc, dt, dn) {
 	cur_frm.add_fetch('item_code', 'standard_rate', 'rate');
 }
 
+cur_frm.cscript.item_code= function(doc, cdt, cdn){
+	var child_doc = locals[cdt][cdn];
+	child_doc.qty = 1;
+	cur_frm.fields_dict.purposes.grid.refresh();
+}
+
 cur_frm.fields_dict.customer.get_query = function(doc,cdt,cdn) {
 	return {query: "erpnext.controllers.queries.customer_query" }
 }
