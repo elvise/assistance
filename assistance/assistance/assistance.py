@@ -11,12 +11,15 @@ from frappe import _
 
 def validate(self, method):
     for d in self.get('purposes'):
-        if d.serial_no and not frappe.db.exists({
-            "doctype": "Serial No",
-            "warehouse": d.warehouse,
-            "item_code": d.item_code
-        }, d.serial_no):
-            frappe.throw(_("Serial No {0} does not exist").format(d.serial_no))
+        if d.serial_no:
+            for serial_no in d.serial_no.split("\n"):
+                if serial_no and not frappe.db.exists({
+                        "doctype": "Serial No",
+                        "warehouse": d.warehouse,
+                        "item_code": d.item_code,
+                        "name": serial_no
+                    }, d.serial_no):
+                    frappe.throw(_("Serial No {0} does not exist").format(serial_no))
 
 def before_save(self, method):
     update_sales_order_items(self)
