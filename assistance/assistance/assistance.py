@@ -11,8 +11,11 @@ from frappe import _
 
 def validate(self, method):
     for d in self.get('purposes'):
-        if not d.serial_no:
-            frappe.throw(_("Serial No is mandatory"))
+        if not d.serial_no and frappe.db.exists({
+            "doctype": "Serial No",
+            "item_code": d.item_code
+        }):
+            frappe.throw(_("Serial No is mandatory for Item Code : ") + d.item_code)
 
         if d.serial_no:
             for serial_no in d.serial_no.split("\n"):
